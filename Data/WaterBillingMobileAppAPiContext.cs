@@ -37,7 +37,6 @@ namespace WaterBillingMobileAppAPi.Data
         public DbSet<WaterBillingMobileAppAPi.Models.BS_DebtorSMS> BS_DebtorSMS { get; set; } = default!;
 
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

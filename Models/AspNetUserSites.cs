@@ -6,6 +6,7 @@ namespace WaterBillingMobileAppAPi.Models
     {
         [Key]
         public string UserId { get; set; }
+
         public string Site { get; set; }
     }
 }

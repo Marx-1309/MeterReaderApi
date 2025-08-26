@@ -28,10 +28,10 @@ public static class AllApiEndpoints
 
             foreach (var customer in customers)
             {
-               var phone = ds.Where(r => r.CUSTNMBR?.Trim() == customer.CUSTNMBR?.Trim())
-              .Select(r => r.CellPhoneNumber1)
-              .FirstOrDefault();
-              customer.PHONE1 = phone ?? 0;
+                var phone = ds.Where(r => r.CUSTNMBR?.Trim() == customer.CUSTNMBR?.Trim())
+               .Select(r => r.CellPhoneNumber1)
+               .FirstOrDefault();
+                customer.PHONE1 = phone ?? 0;
                 // Trim string properties
                 var stringProperties = customer.GetType()
                                                .GetProperties()
@@ -101,6 +101,7 @@ public static class AllApiEndpoints
         .WithName("DeleteCustomer").AllowAnonymous()
         .WithOpenApi();
     }
+
     public static void MapDeviceEndpoints(this IEndpointRouteBuilder routes)
     {
         var group = routes.MapGroup("/api/Device").WithTags(nameof(Device));
@@ -160,6 +161,7 @@ public static class AllApiEndpoints
         .WithName("DeleteDevice")
         .WithOpenApi();
     }
+
     public static void MapMonthEndpoints(this IEndpointRouteBuilder routes)
     {
         var group = routes.MapGroup("/api/Month").WithTags(nameof(Month));
@@ -275,6 +277,7 @@ public static class AllApiEndpoints
         .WithName("DeleteReadingExport")
         .WithOpenApi();
     }
+
     public static void MapRM00303Endpoints(this IEndpointRouteBuilder routes)
     {
         var group = routes.MapGroup("/api/RM00303").WithTags(nameof(RM00303));
@@ -331,6 +334,7 @@ public static class AllApiEndpoints
         .WithName("DeleteRM00303").AllowAnonymous()
         .WithOpenApi();
     }
+
     public static void MapUserEndpoints(this IEndpointRouteBuilder routes)
     {
         var group = routes.MapGroup("/api/User").WithTags(nameof(User));
@@ -399,10 +403,9 @@ public static class AllApiEndpoints
             if (string.IsNullOrEmpty(billingSite) || billingSite.Trim() == "PRIVILEGED")
             {
                 var allReadings = await db.Reading.ToListAsync();
-                
+
                 foreach (var reading in allReadings)
                 {
-                    
                     // Trim string properties
                     var stringProperties = reading.GetType()
                                                    .GetProperties()
@@ -448,7 +451,6 @@ public static class AllApiEndpoints
         })
         .WithName("GetAllReadings").AllowAnonymous().WithOpenApi();
 
-
         //group.MapGet("/{id}", async Task<Results<Ok<Reading>, NotFound>> (int id, WaterBillingMobileAppAPiContext db) =>
         //{
         //    return await db.Reading.AsNoTracking()
@@ -471,6 +473,8 @@ public static class AllApiEndpoints
                     .SetProperty(m => m.METER_NUMBER, reading.METER_NUMBER)
                     .SetProperty(m => m.METER_READER, reading.METER_READER)
                     .SetProperty(m => m.ReadingDate, reading.ReadingDate)
+                    .SetProperty(m => m.Latitude, reading.Latitude)
+                    .SetProperty(m => m.Longitude, reading.Longitude)
 
                 );
 
@@ -478,7 +482,6 @@ public static class AllApiEndpoints
         })
      .WithName("UpdateReading").AllowAnonymous()
      .WithOpenApi();
-
 
         group.MapPut("Image/{id}", async Task<Results<Ok, NotFound>> (ImageSyncDto reading, WaterBillingMobileAppAPiContext db) =>
         {
@@ -493,10 +496,6 @@ public static class AllApiEndpoints
         })
      .WithName("UpdateImage").AllowAnonymous()
      .WithOpenApi();
-
-
-
-
 
         group.MapPost("/", async (Reading reading, WaterBillingMobileAppAPiContext db) =>
         {
@@ -527,7 +526,8 @@ public static class AllApiEndpoints
         .WithName("DeleteReading").AllowAnonymous()
         .WithOpenApi();
     }
-    public static void MapBillingLocationEndpoints (this IEndpointRouteBuilder routes)
+
+    public static void MapBillingLocationEndpoints(this IEndpointRouteBuilder routes)
     {
         var group = routes.MapGroup("/api/BillingLocation").WithTags(nameof(BillingLocation));
 
@@ -567,7 +567,7 @@ public static class AllApiEndpoints
         {
             db.BillingLocation.Add(billingLocation);
             await db.SaveChangesAsync();
-            return TypedResults.Created($"/api/BillingLocation/{billingLocation.BillingLocationID}",billingLocation);
+            return TypedResults.Created($"/api/BillingLocation/{billingLocation.BillingLocationID}", billingLocation);
         })
         .WithName("CreateBillingLocation").AllowAnonymous()
         .WithOpenApi();
@@ -622,13 +622,13 @@ public static class AllApiEndpoints
                 }.Union(claims)
             .Union(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-        var securityToken = new JwtSecurityToken(
-            issuer: "WaterBillingMobileAppAPi",
-            audience: "MauiApp",
-            claims: tokenClaims,
-            expires: DateTime.UtcNow.AddMinutes(Convert.ToInt32(1000000)),
-            signingCredentials: credentials
-            );
+            var securityToken = new JwtSecurityToken(
+                issuer: "WaterBillingMobileAppAPi",
+                audience: "MauiApp",
+                claims: tokenClaims,
+                expires: DateTime.UtcNow.AddMinutes(Convert.ToInt32(1000000)),
+                signingCredentials: credentials
+                );
 
             var accessToken = new JwtSecurityTokenHandler().WriteToken(securityToken);
 
@@ -643,7 +643,6 @@ public static class AllApiEndpoints
         })
             //.WithName("CreateLogin").AllowAnonymous()
             .AllowAnonymous();
-
     }
 
     private static void TrimStringProperties(Customer model)
@@ -661,6 +660,7 @@ public static class AllApiEndpoints
             }
         }
     }
+
     //public static async Task<string> GetUserBillingSiteAsync(string userId, WaterBillingMobileAppAPiContext db)
     //{
     //    var site = db.AspNetUserSites.Where(r => r.UserId == userId).Select(r => r.Site).FirstOrDefaultAsync();

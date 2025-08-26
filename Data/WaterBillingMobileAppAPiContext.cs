@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WaterBillingMobileAppAPi.Models;
 
 namespace WaterBillingMobileAppAPi.Data
 {
     public class WaterBillingMobileAppAPiContext : IdentityDbContext
     {
-        public WaterBillingMobileAppAPiContext (DbContextOptions<WaterBillingMobileAppAPiContext> options)
+        public WaterBillingMobileAppAPiContext(DbContextOptions<WaterBillingMobileAppAPiContext> options)
             : base(options)
         {
         }
-
-
 
         public DbSet<WaterBillingMobileAppAPi.Models.ReadingExport> ReadingExport { get; set; } = default!;
 
@@ -36,11 +27,9 @@ namespace WaterBillingMobileAppAPi.Data
         public DbSet<WaterBillingMobileAppAPi.Models.AspNetUserSites> AspNetUserSites { get; set; } = default!;
         public DbSet<WaterBillingMobileAppAPi.Models.BS_DebtorSMS> BS_DebtorSMS { get; set; } = default!;
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
 
             modelBuilder.Entity<IdentityRole>().HasData(
                     new IdentityRole
@@ -127,7 +116,6 @@ namespace WaterBillingMobileAppAPi.Data
                             EmailConfirmed = true
                         }
 
-
     );
 
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(
@@ -148,8 +136,6 @@ namespace WaterBillingMobileAppAPi.Data
                                         }
                 );
         }
-
-
 
         public DbSet<WaterBillingMobileAppAPi.Models.BillingLocation> BillingLocation { get; set; } = default!;
     }

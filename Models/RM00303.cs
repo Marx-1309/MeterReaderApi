@@ -6,7 +6,5 @@ namespace WaterBillingMobileAppAPi.Models
     {
         [Key]
         public string SALSTERR { get; set; }
-
-
     }
 }

@@ -6,9 +6,8 @@ namespace WaterBillingMobileAppAPi.Mappings.Maps
 {
     public class ClassDtoMapping : Profile
     {
-        public ClassDtoMapping() 
+        public ClassDtoMapping()
         {
-           
             CreateMap<Reading, UpdateReadingDto>().ReverseMap();
             CreateMap<ImageSyncDto, UpdateReadingDto>().ReverseMap();
             CreateMap<Customer, CustomerDto>().ReverseMap();

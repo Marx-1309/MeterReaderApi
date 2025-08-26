@@ -9,10 +9,10 @@ namespace WaterBillingMobileAppAPi.Models
         [Key]
         [Column("MonthID")]
         public System.Int64 MonthID { get; set; }
+
         public string? MonthName { get; set; }
 
         [NotMapped]
         public string TitleProp => $"{MonthName}";
     }
 }
-

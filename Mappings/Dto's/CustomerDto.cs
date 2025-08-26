@@ -1,8 +1,4 @@
-﻿using WaterBillingMobileAppAPi.Mappings.Dto_s;
-using System.Text.Json.Serialization;
-
-
-namespace WaterBillingMobileAppAPi.Mappings.Dto_s
+﻿namespace WaterBillingMobileAppAPi.Mappings.Dto_s
 {
     public class CustomerDto
     {

@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using WaterBillingMobileAppAPi.Mappings.Dto_s;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace WaterBillingMobileAppAPi.Models
@@ -9,16 +8,17 @@ namespace WaterBillingMobileAppAPi.Models
     public class Reading
     {
         [Key]
-        //[Column("WaterReadingExportDataID")]
         public System.Int64? WaterReadingExportDataID { get; set; }
 
         public System.Int64 WaterReadingExportID { get; set; }
         public string? CUSTOMER_NUMBER { get; set; }
         public string? CUSTOMER_NAME { get; set; }
         public string? AREA { get; set; }
+
         //[NotMapped]
         //public long? PHONE1 { get; set; }
         public string? ERF_NUMBER { get; set; }
+
         public string? METER_NUMBER { get; set; }
         public decimal? CURRENT_READING { get; set; }
         public decimal? PREVIOUS_READING { get; set; }
@@ -29,15 +29,21 @@ namespace WaterBillingMobileAppAPi.Models
         public string? METER_READER { get; set; }
         public string? Comment { get; set; }
         public string? ReadingDate { get; set; }
+
         //public System.Int64? WaterReadingTypeID { get; set; }
         public byte[]? MeterImage { get; set; }
+
         [JsonIgnore]
         public bool? IsCityTab { get; set; }
+
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
 
         // Navigation property to the WaterReadingExport class
         [ForeignKey("WaterReadingExportID")]
         [InverseProperty("Readings")]
         public ReadingExport WaterReadingExport { get; set; }
+
         //public object MeterImage { get; internal set; }
     }
 }

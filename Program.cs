@@ -15,7 +15,6 @@ using WaterBillingMobileAppAPi.Models;
 
 namespace WaterBillingMobileAppAP
 {
-
     public class Program
     {
         public WaterBillingMobileAppAPiContext context;

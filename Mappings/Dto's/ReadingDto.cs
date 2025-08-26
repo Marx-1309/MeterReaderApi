@@ -1,5 +1,4 @@
 ﻿using SQLite;
-using System.Text.Json.Serialization;
 
 namespace WaterBillingMobileAppAPi.Mappings.Dto_s
 {
@@ -8,6 +7,7 @@ namespace WaterBillingMobileAppAPi.Mappings.Dto_s
     {
         [PrimaryKey, AutoIncrement]
         public int WaterReadingExportDataID { get; set; }
+
         public string CUSTOMER_NUMBER { get; set; }
         public string? METER_NUMBER { get; set; }
         public decimal CURRENT_READING { get; set; }
@@ -16,7 +16,6 @@ namespace WaterBillingMobileAppAPi.Mappings.Dto_s
         public int Year { get; set; }
         public int WaterReadingExportID { get; set; }
         public byte[]? MeterImage { get; set; }
-
     }
 
     public class UpdateReadingDto
@@ -29,6 +28,8 @@ namespace WaterBillingMobileAppAPi.Mappings.Dto_s
         public string? Comment { get; set; }
         public string? METER_READER { get; set; }
         public string? ReadingDate { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
     }
 
     public class ImageSyncDto

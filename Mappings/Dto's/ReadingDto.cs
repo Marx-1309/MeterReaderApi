@@ -28,8 +28,8 @@ namespace WaterBillingMobileAppAPi.Mappings.Dto_s
         public string? Comment { get; set; }
         public string? METER_READER { get; set; }
         public string? ReadingDate { get; set; }
-        public double? Latitude { get; set; }
-        public double? Longitude { get; set; }
+        public decimal? Latitude { get; set; }
+        public decimal? Longitude { get; set; }
     }
 
     public class ImageSyncDto

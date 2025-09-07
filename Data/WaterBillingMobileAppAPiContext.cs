@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WaterBillingMobileAppAPi.Models;
 
 namespace WaterBillingMobileAppAPi.Data
 {
@@ -135,6 +136,19 @@ namespace WaterBillingMobileAppAPi.Data
                                             UserId = "95535cdc-2502-4eff-b53b-f556107afefd",
                                         }
                 );
+
+            modelBuilder.Entity<Reading>(entity =>
+            {
+                entity.Property(e => e.Latitude)
+                      .HasColumnType("DECIMAL(11,8)")
+                      .IsRequired(false);
+
+                entity.Property(e => e.Longitude)
+                      .HasColumnType("DECIMAL(11,8)")
+                      .IsRequired(false);
+            });
+
+
         }
 
         public DbSet<WaterBillingMobileAppAPi.Models.BillingLocation> BillingLocation { get; set; } = default!;

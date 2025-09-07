@@ -473,8 +473,10 @@ public static class AllApiEndpoints
                     .SetProperty(m => m.METER_NUMBER, reading.METER_NUMBER)
                     .SetProperty(m => m.METER_READER, reading.METER_READER)
                     .SetProperty(m => m.ReadingDate, reading.ReadingDate)
-                    .SetProperty(m => m.Latitude, reading.Latitude)
-                    .SetProperty(m => m.Longitude, reading.Longitude)
+                    .SetProperty(m => m.Latitude, reading.Latitude.HasValue ? Math.Round(reading.Latitude.Value, 8) : 0)
+                    .SetProperty(m => m.Longitude, reading.Longitude.HasValue ? Math.Round(reading.Longitude.Value, 8) : 0)
+
+
 
                 );
 

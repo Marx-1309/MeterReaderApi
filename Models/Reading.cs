@@ -36,8 +36,8 @@ namespace WaterBillingMobileAppAPi.Models
         [JsonIgnore]
         public bool? IsCityTab { get; set; }
 
-        public double? Latitude { get; set; }
-        public double? Longitude { get; set; }
+        public decimal? Latitude { get; set; }
+        public decimal? Longitude { get; set; }
 
         // Navigation property to the WaterReadingExport class
         [ForeignKey("WaterReadingExportID")]

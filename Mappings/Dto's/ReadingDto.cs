@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace WaterBillingMobileAppAPi.Mappings.Dto_s
+namespace MeterReaderApi.Mappings.Dto_s
 {
     public class ReadingDto
 

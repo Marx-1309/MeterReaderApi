@@ -9,17 +9,17 @@ using Serilog;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using WaterBillingMobileAppAPi;
-using WaterBillingMobileAppAPi.Data;
-using WaterBillingMobileAppAPi.Models;
+using MeterReaderApi;
+using MeterReaderApi.Data;
+using MeterReaderApi.Models;
 
 namespace WaterBillingMobileAppAP
 {
     public class Program
     {
-        public WaterBillingMobileAppAPiContext context;
+        public MeterReaderApiContext context;
 
-        public Program(WaterBillingMobileAppAPiContext _context)
+        public Program(MeterReaderApiContext _context)
         {
             context = _context;
         }
@@ -40,7 +40,7 @@ namespace WaterBillingMobileAppAP
 
             builder.Services.AddIdentityCore<IdentityUser>()
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<WaterBillingMobileAppAPiContext>();
+                .AddEntityFrameworkStores<MeterReaderApiContext>();
 
             builder.Services.AddAuthentication(options =>
             {
@@ -72,8 +72,8 @@ namespace WaterBillingMobileAppAP
                 lc.WriteTo.Console()
                 .ReadFrom.Configuration(ctx.Configuration));
 
-            builder.Services.AddDbContext<WaterBillingMobileAppAPiContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("WaterBillingMobileAppAPiContext") ?? throw new InvalidOperationException("Connection string 'WaterBillingMobileAppAPiContext' not found.")));
+            builder.Services.AddDbContext<MeterReaderApiContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MeterReaderApiContext") ?? throw new InvalidOperationException("Connection string 'MeterReaderApiContext' not found.")));
 
             // Add services to the container.
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -107,7 +107,7 @@ namespace WaterBillingMobileAppAP
 
             app.MapReadingEndpoints();
             app.MapBillingLocationEndpoints();
-            //var dbContext = app.Services.GetRequiredService<WaterBillingMobileAppAPiContext>();
+            //var dbContext = app.Services.GetRequiredService<MeterReaderApiContext>();
             //AllApiEndpoints.Initialize(dbContext);
             app.Run();
         }

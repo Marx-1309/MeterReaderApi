@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace WaterBillingMobileAppAPi.Migrations
+namespace MeterReaderApi.Migrations
 {
     /// <inheritdoc />
     public partial class Init_mig : Migration

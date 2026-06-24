@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WaterBillingMobileAppAPi.Models
+namespace MeterReaderApi.Models
 {
     [Table("Bs_BillingLocation")]
     public class BillingLocation

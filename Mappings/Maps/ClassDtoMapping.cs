@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using WaterBillingMobileAppAPi.Mappings.Dto_s;
-using WaterBillingMobileAppAPi.Models;
+using MeterReaderApi.Mappings.Dto_s;
+using MeterReaderApi.Models;
 
-namespace WaterBillingMobileAppAPi.Mappings.Maps
+namespace MeterReaderApi.Mappings.Maps
 {
     public class ClassDtoMapping : Profile
     {

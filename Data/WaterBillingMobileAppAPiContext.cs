@@ -1,32 +1,32 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WaterBillingMobileAppAPi.Models;
+using MeterReaderApi.Models;
 
-namespace WaterBillingMobileAppAPi.Data
+namespace MeterReaderApi.Data
 {
-    public class WaterBillingMobileAppAPiContext : IdentityDbContext
+    public class MeterReaderApiContext : IdentityDbContext
     {
-        public WaterBillingMobileAppAPiContext(DbContextOptions<WaterBillingMobileAppAPiContext> options)
+        public MeterReaderApiContext(DbContextOptions<MeterReaderApiContext> options)
             : base(options)
         {
         }
 
-        public DbSet<WaterBillingMobileAppAPi.Models.ReadingExport> ReadingExport { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.ReadingExport> ReadingExport { get; set; } = default!;
 
-        public DbSet<WaterBillingMobileAppAPi.Models.User> User { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.User> User { get; set; } = default!;
 
-        public DbSet<WaterBillingMobileAppAPi.Models.Customer> Customer { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.Customer> Customer { get; set; } = default!;
 
-        public DbSet<WaterBillingMobileAppAPi.Models.Reading> Reading { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.Reading> Reading { get; set; } = default!;
 
-        public DbSet<WaterBillingMobileAppAPi.Models.RM00303> RM00303 { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.RM00303> RM00303 { get; set; } = default!;
 
-        public DbSet<WaterBillingMobileAppAPi.Models.Month> Month { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.Month> Month { get; set; } = default!;
 
-        public DbSet<WaterBillingMobileAppAPi.Models.Device> Device { get; set; } = default!;
-        public DbSet<WaterBillingMobileAppAPi.Models.AspNetUserSites> AspNetUserSites { get; set; } = default!;
-        public DbSet<WaterBillingMobileAppAPi.Models.BS_DebtorSMS> BS_DebtorSMS { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.Device> Device { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.AspNetUserSites> AspNetUserSites { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.BS_DebtorSMS> BS_DebtorSMS { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -151,6 +151,6 @@ namespace WaterBillingMobileAppAPi.Data
 
         }
 
-        public DbSet<WaterBillingMobileAppAPi.Models.BillingLocation> BillingLocation { get; set; } = default!;
+        public DbSet<MeterReaderApi.Models.BillingLocation> BillingLocation { get; set; } = default!;
     }
 }

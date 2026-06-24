@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WaterBillingMobileAppAPi.Models
+namespace MeterReaderApi.Models
 {
     [Table("BS_Month")]
     public class Month

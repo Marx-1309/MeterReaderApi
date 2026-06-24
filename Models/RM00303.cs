@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WaterBillingMobileAppAPi.Models
+namespace MeterReaderApi.Models
 {
     public class RM00303
     {

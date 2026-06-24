@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace WaterBillingMobileAppAPi.Models
+namespace MeterReaderApi.Models
 {
     [Table("BS_WaterReadingExportData")]
     public class Reading

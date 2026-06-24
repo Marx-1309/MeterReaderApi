@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WaterBillingMobileAppAPi.Data;
+using MeterReaderApi.Data;
 
 #nullable disable
 
-namespace WaterBillingMobileAppAPi.Migrations
+namespace MeterReaderApi.Migrations
 {
-    [DbContext(typeof(WaterBillingMobileAppAPiContext))]
+    [DbContext(typeof(MeterReaderApiContext))]
     [Migration("20241113143006_Init_mig")]
     partial class Init_mig
     {
@@ -304,7 +304,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.AspNetUserSites", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.AspNetUserSites", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -318,7 +318,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.ToTable("AspNetUserSites");
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.BillingLocation", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.BillingLocation", b =>
                 {
                     b.Property<long>("BillingLocationID")
                         .ValueGeneratedOnAdd()
@@ -334,7 +334,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.ToTable("Bs_BillingLocation");
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.Customer", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.Customer", b =>
                 {
                     b.Property<string>("CUSTNMBR")
                         .HasColumnType("nvarchar(450)")
@@ -357,7 +357,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.ToTable("RM00101");
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.Device", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.Device", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -383,7 +383,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.ToTable("Device");
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.Month", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.Month", b =>
                 {
                     b.Property<long>("MonthID")
                         .ValueGeneratedOnAdd()
@@ -400,7 +400,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.ToTable("BS_Month");
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.RM00303", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.RM00303", b =>
                 {
                     b.Property<string>("SALSTERR")
                         .HasColumnType("nvarchar(450)");
@@ -410,7 +410,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.ToTable("RM00303");
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.Reading", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.Reading", b =>
                 {
                     b.Property<long?>("WaterReadingExportDataID")
                         .ValueGeneratedOnAdd()
@@ -476,7 +476,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.ToTable("BS_WaterReadingExportData");
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.ReadingExport", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.ReadingExport", b =>
                 {
                     b.Property<long>("WaterReadingExportID")
                         .ValueGeneratedOnAdd()
@@ -499,7 +499,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.ToTable("BS_WaterReadingExport");
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.User", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -571,9 +571,9 @@ namespace WaterBillingMobileAppAPi.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.Reading", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.Reading", b =>
                 {
-                    b.HasOne("WaterBillingMobileAppAPi.Models.ReadingExport", "WaterReadingExport")
+                    b.HasOne("MeterReaderApi.Models.ReadingExport", "WaterReadingExport")
                         .WithMany("Readings")
                         .HasForeignKey("WaterReadingExportID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -582,7 +582,7 @@ namespace WaterBillingMobileAppAPi.Migrations
                     b.Navigation("WaterReadingExport");
                 });
 
-            modelBuilder.Entity("WaterBillingMobileAppAPi.Models.ReadingExport", b =>
+            modelBuilder.Entity("MeterReaderApi.Models.ReadingExport", b =>
                 {
                     b.Navigation("Readings");
                 });

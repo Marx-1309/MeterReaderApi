@@ -603,18 +603,4 @@ public static class AllApiEndpoints
         })
         .AllowAnonymous();
     }
-
-    private static void TrimStringProperties(Customer model)
-    {
-        var stringProperties = model.GetType()
-                                    .GetProperties()
-                                    .Where(p => p.PropertyType == typeof(string));
-
-        foreach (var property in stringProperties)
-        {
-            var value = property.GetValue(model) as string;
-            if (value != null)
-                property.SetValue(model, value.Trim());
-        }
-    }
 }
